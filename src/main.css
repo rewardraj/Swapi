@@ -1,0 +1,62 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+  
+  main > :first-child {
+    margin-top: 0;
+  }
+  
+  main > :last-child {
+    margin-bottom: 0;}
+
+
+h1{
+    display: flex;
+    justify-content: center;
+}
+.main-container{
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+   margin-top: 3%;
+}
+.search{
+    display: flex;
+    margin-left: 25%;
+}
+.search-header{
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+/*Form */
+form.search input[type=text]{
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid grey;
+    width: 50%;
+    background: #f1f1f1;
+}
+/* Style the submit button */
+form.search button {
+    width: 15%;
+    padding: 7px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+  }
+  form.search button:hover {
+    background: #0b7dda;
+  }

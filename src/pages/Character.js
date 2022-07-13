@@ -1,47 +1,45 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import Grid from '@mui/material/Grid';
-import CardHeader from '@mui/material/CardHeader';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import React, {useState, useEffect} from 'react'
+import { Card, Grid } from 'semantic-ui-react';
+  
+export default function Character ({data}) {
+  
+  const [people, setPeople] = useState({});
+  
+  useEffect(() => {
+    async function fetchPeople(){
+      const res = await fetch('https://swapi.dev/api/people/?format=json');
+      const data = await res.json();
+      setPeople(data.results);
+    }
+    fetchPeople();
+  }, []);
 
-
-export default function Character({ character }) {
-  return (
+    return (
     <>
-      <h1>Characters</h1>
-
-      <Grid container spacing={3}>
-        {character.map((character) => {
+      <h2>Characters</h2>
+      <Grid columns={3}>
+        {data.map((people, i) => {
           return (
-            <Grid item xs={3}>
-              <Card sx={{ maxWidth: 345 }}>
-                <CardHeader>({character.name})</CardHeader>
-                <CardContent>
-                  <Typography variant="body2" color="text.secondary">
+          <Grid.Column key={i}>
+              <Card>
+                <Card.Content>
+                  <Card.Header>{people.name}</Card.Header>
+                  <Card.Description>
                     <strong>Height</strong>
-                    <p>{character.height}</p>
+                    <p>{people.height}</p>
                     <strong>Mass</strong>
-                    <p>{character.mass}</p>
+                    <p>{people.mass}</p>
                     <strong>Hair Color</strong>
-                    <p>{character.hair_color}</p>
-                  </Typography>
-                </CardContent>
-                <CardActions disableSpacing>
-                  <IconButton aria-label="add to favorites">
-                    <FavoriteIcon />
-                  </IconButton>
-                </CardActions>
+                    <p>{people.hair_color}</p>
+                  </Card.Description>
+                </Card.Content>
               </Card>
-            </Grid>
+            </Grid.Column>
           )
-        }
-        )}
+        })}
+            
       </Grid>
-
     </>
-  );
+  )
 }
+
